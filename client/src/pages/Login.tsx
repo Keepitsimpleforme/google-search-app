@@ -8,13 +8,12 @@ export default function Login() {
   const [message, setMessage] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
-
   const handleLogin = async (e: any) => {
     e.preventDefault();
     setMessage("Logging in...");
 
     try {
-      const res = await fetch("http://localhost:5001/login", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
